@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organizer Dashboard</title>
+  <script>
+    try {
+      var savedTheme = localStorage.getItem("cps-theme");
+      if (savedTheme === "dark" || (savedTheme !== "light" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } catch (_) {}
+  </script>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <a class="brand-title" href="/">Chess Pairing Web Application</a>
+      <p class="brand-subtitle">Organizer control panel</p>
+    </div>
+    <div class="header-actions">
+      <a class="link-ghost" href="/">Landing</a>
+      <a class="link-ghost" href="/live">Live View</a>
+      <button class="theme-toggle" type="button" data-theme-toggle>Switch To Dark</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="topbar">
+      <h2>Organizer Modules</h2>
+      <div>
+        <span id="session-user" class="helper"></span>
+        <button id="logout-btn" class="btn danger">Logout</button>
+      </div>
+    </div>
+
+    <section class="module-grid">
+      <article class="module">
+        <h3>1) Register &amp; Manage Players</h3>
+        <form id="player-form">
+          <label for="player-name">Player Name</label>
+          <input id="player-name" required>
+          <label for="player-rank">Initial Rank</label>
+          <input id="player-rank" type="number" min="1" required>
+          <button class="btn" type="submit">Add Player</button>
+        </form>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Name</th><th>Rank</th><th>Score</th><th>Action</th></tr></thead>
+            <tbody id="players-body"></tbody>
+          </table>
+        </div>
+        <div id="players-status" class="status"></div>
+      </article>
+
+      <article class="module">
+        <h3>2) Create &amp; Manage Swiss Tournament</h3>
+        <form id="tournament-form">
+          <label for="tournament-name">Tournament Name</label>
+          <input id="tournament-name" required>
+          <button class="btn" type="submit">Create Tournament</button>
+        </form>
+        <label for="tournament-select">Active Tournament</label>
+        <select id="tournament-select"></select>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ID</th><th>Name</th><th>Round</th><th>Status</th></tr></thead>
+            <tbody id="tournaments-body"></tbody>
+          </table>
+        </div>
+        <div id="tournaments-status" class="status"></div>
+      </article>
+
+      <article class="module">
+        <h3>3) Generate Round Pairings (Swiss)</h3>
+        <button id="generate-pairings-btn" class="btn">Generate Next Round</button>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Table</th><th>White / Player 1</th><th>Black / Player 2</th><th>Result</th></tr></thead>
+            <tbody id="matches-body"></tbody>
+          </table>
+        </div>
+        <div id="pairings-status" class="status"></div>
+      </article>
+
+      <article class="module">
+        <h3>4) Enter Match Results (1, 0.5, 0)</h3>
+        <form id="result-form">
+          <label for="result-match">Match</label>
+          <select id="result-match"></select>
+          <label for="result-value">Result</label>
+          <select id="result-value">
+            <option value="P1_WIN">Player 1 Wins (1 - 0)</option>
+            <option value="DRAW">Draw (0.5 - 0.5)</option>
+            <option value="P2_WIN">Player 2 Wins (0 - 1)</option>
+            <option value="BYE">BYE (1 - 0)</option>
+          </select>
+          <button class="btn" type="submit">Save Result</button>
+        </form>
+        <div id="results-status" class="status"></div>
+      </article>
+
+      <article class="module">
+        <h3>5) View Live Leaderboard</h3>
+        <button id="refresh-leaderboard-btn" class="btn secondary">Refresh Leaderboard</button>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Rank</th><th>Player</th><th>Score</th><th>Initial Rank</th></tr></thead>
+            <tbody id="leaderboard-body"></tbody>
+          </table>
+        </div>
+        <div id="leaderboard-status" class="status"></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="/static/js/theme.js"></script>
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

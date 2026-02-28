@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organizer Login</title>
+  <script>
+    try {
+      var savedTheme = localStorage.getItem("cps-theme");
+      if (savedTheme === "dark" || (savedTheme !== "light" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } catch (_) {}
+  </script>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <a class="brand-title" href="/">Chess Pairing Web Application</a>
+      <p class="brand-subtitle">Organizer authorization portal</p>
+    </div>
+    <div class="header-actions">
+      <a class="link-ghost" href="/">Landing</a>
+      <a class="link-ghost" href="/live">Live View</a>
+      <button class="theme-toggle" type="button" data-theme-toggle>Switch To Dark</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="login-box">
+      <h1>Organizer Login</h1>
+      <p>Authorize organizer access for tournament management.</p>
+      <form id="login-form">
+        <label for="username">Username</label>
+        <input id="username" name="username" required autocomplete="username">
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required autocomplete="current-password">
+
+        <button class="btn" type="submit">Login</button>
+        <div id="login-status" class="status"></div>
+      </form>
+    </section>
+  </main>
+
+  <script src="/static/js/theme.js"></script>
+  <script src="/static/js/login.js"></script>
+</body>
+</html>

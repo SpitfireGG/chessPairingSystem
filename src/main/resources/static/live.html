@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Pairings & Leaderboard</title>
+  <script>
+    try {
+      var savedTheme = localStorage.getItem("cps-theme");
+      if (savedTheme === "dark" || (savedTheme !== "light" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    } catch (_) {}
+  </script>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <a class="brand-title" href="/">Chess Pairing Web Application</a>
+      <p class="brand-subtitle">Public pairings and leaderboard view</p>
+    </div>
+    <div class="header-actions">
+      <a class="link-ghost" href="/">Landing</a>
+      <a class="link-ghost" href="/login">Organizer Login</a>
+      <button class="theme-toggle" type="button" data-theme-toggle>Switch To Dark</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <h1>Live Player View</h1>
+      <p>Players can view current pairings and leaderboard without organizer login.</p>
+      <label for="live-tournament-select">Tournament</label>
+      <select id="live-tournament-select"></select>
+      <div class="actions">
+        <button id="live-refresh-btn" class="btn secondary">Refresh Live Data</button>
+      </div>
+    </section>
+
+    <section class="module-grid" style="margin-top: 14px;">
+      <article class="module">
+        <h3>Current Round Pairings</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Table</th><th>Player 1</th><th>Player 2</th><th>Result</th></tr></thead>
+            <tbody id="live-matches-body"></tbody>
+          </table>
+        </div>
+      </article>
+      <article class="module">
+        <h3>Live Leaderboard</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Rank</th><th>Player</th><th>Score</th></tr></thead>
+            <tbody id="live-leaderboard-body"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+    <div id="live-status" class="status"></div>
+  </main>
+
+  <script src="/static/js/theme.js"></script>
+  <script src="/static/js/live.js"></script>
+</body>
+</html>

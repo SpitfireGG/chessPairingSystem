@@ -1,0 +1,328 @@
+:root {
+  --bg: #f2f3f5;
+  --bg-soft: #e8eaee;
+  --panel: #ffffff;
+  --panel-soft: #f9fafb;
+  --ink: #1e232c;
+  --muted: #5f6978;
+  --line: #d8dde6;
+  --accent: #3c5f8f;
+  --accent-strong: #2f4d76;
+  --danger: #a84747;
+  --ok: #427c58;
+  --shadow: 0 18px 40px rgba(23, 28, 36, 0.09);
+  --header-bg: rgba(255, 255, 255, 0.88);
+  --body-shade: #f7f8fa;
+  --btn-secondary: #4c668d;
+}
+
+html[data-theme="dark"] {
+  --bg: #101318;
+  --bg-soft: #171c24;
+  --panel: #1a2029;
+  --panel-soft: #202733;
+  --ink: #e7ebf2;
+  --muted: #a3adbf;
+  --line: #303946;
+  --accent: #7f9bc8;
+  --accent-strong: #96aed4;
+  --danger: #d57b7b;
+  --ok: #7ec09a;
+  --shadow: 0 20px 46px rgba(3, 5, 9, 0.45);
+  --header-bg: rgba(26, 32, 41, 0.88);
+  --body-shade: #141923;
+  --btn-secondary: #6880a6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Merriweather", "Palatino Linotype", serif;
+  background:
+    radial-gradient(circle at 12% 10%, var(--bg-soft) 0, transparent 42%),
+    linear-gradient(160deg, var(--bg), var(--body-shade));
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header {
+  width: min(1400px, calc(100% - 34px));
+  margin: 16px auto 6px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--header-bg);
+  backdrop-filter: blur(4px);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.brand-title {
+  margin: 0;
+  font-family: "Fira Sans", "Trebuchet MS", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+}
+
+.brand-subtitle {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.link-ghost {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--panel-soft);
+  padding: 7px 11px;
+  font-size: 0.87rem;
+  color: var(--muted);
+  font-family: "Fira Sans", "Trebuchet MS", sans-serif;
+}
+
+.theme-toggle {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--panel-soft);
+  color: var(--ink);
+  padding: 7px 12px;
+  font-size: 0.87rem;
+  font-family: "Fira Sans", "Trebuchet MS", sans-serif;
+  cursor: pointer;
+}
+
+.page {
+  width: min(1400px, calc(100% - 34px));
+  margin: 10px auto 28px;
+}
+
+.hero,
+.module,
+.login-box,
+.card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  padding: 34px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.8vw, 2.7rem);
+  letter-spacing: 0.01em;
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.64;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-family: "Fira Sans", "Trebuchet MS", sans-serif;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--accent-strong);
+}
+
+.btn.secondary {
+  background: var(--btn-secondary);
+}
+
+.btn.danger {
+  background: var(--danger);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.grid {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  padding: 16px;
+}
+
+.card h3 {
+  margin: 0 0 7px;
+  font-size: 1rem;
+  font-family: "Fira Sans", "Trebuchet MS", sans-serif;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.topbar h2 {
+  margin: 0;
+  font-family: "Fira Sans", "Trebuchet MS", sans-serif;
+}
+
+.module-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+}
+
+.module {
+  padding: 16px;
+}
+
+.module h3 {
+  margin: 0 0 10px;
+  font-family: "Fira Sans", "Trebuchet MS", sans-serif;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  color: var(--muted);
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 9px 10px;
+  margin-bottom: 8px;
+  background: var(--panel-soft);
+  color: var(--ink);
+  font-family: "Fira Sans", "Trebuchet MS", sans-serif;
+}
+
+.table-wrap {
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Fira Sans", "Trebuchet MS", sans-serif;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  padding: 8px 9px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+th {
+  background: var(--panel-soft);
+}
+
+.status {
+  margin-top: 8px;
+  min-height: 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.status.ok {
+  color: var(--ok);
+}
+
+.login-box {
+  width: min(760px, 100%);
+  margin: 16px auto 26px;
+  padding: 26px;
+}
+
+.login-box h1 {
+  margin: 0 0 8px;
+  font-size: 1.65rem;
+}
+
+.login-box p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.helper {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 880px) {
+  .site-header,
+  .page {
+    width: calc(100% - 18px);
+  }
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero {
+    padding: 20px;
+  }
+
+  .module-grid {
+    grid-template-columns: 1fr;
+  }
+}
